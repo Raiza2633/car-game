@@ -25,15 +25,15 @@
            background-image: url('https://www.pngfind.com/pngs/b/168-1683799_car-top-view-png.png');
            background-repeat: no-repeat; 
            background-size: 100% 100%;
-
         }
         .enemy{
-            width: 110px; height: 80px;
+            width: 50px; height: 80px;
            position: absolute;
            bottom: 120px;
-           background-image: url('./image/car2.png');
+           background-image: url('https://www.pngfind.com/pngs/b/168-1683805_car-top-view-png.png');
            background-repeat: no-repeat; 
            background-size: 100% 100%;
+           transform: rotate(180deg);
         }
 
        .lines{
@@ -160,7 +160,8 @@
         function endGame(){
             player.start = false;
             startScreen.classList.remove('hide');
-            startScreen.innerHTML = "Game over <br> your Final score is  " + player.score + "<br> Press here to restart the Game.";
+            let ps = Number(player.score) + 1;
+            startScreen.innerHTML = `Game over <br> your Final score is ${ps}<br> Press here to restart the Game.`;
 
         }
 
@@ -205,7 +206,7 @@
                     car.style.left = player.x + "px";
 
                 window.requestAnimationFrame(gamePlay);
-                console.log(player.score++);
+                // console.log(player.score++);
 
                 player.score++;
             //  let ps = player.score -2;
@@ -243,15 +244,14 @@
             player.y = car.offsetTop;
 
             //console.log("top position " + car.offsetTop);
-            //console.log("left position " + car.offsetLeft);ammmihiaacha  o game end hota na tab k kaha hai o score??
-
+            //console.log("left position " + car.offsetLeft);
             for(x=0; x<4; x++){
                 
                 let enemyCar = document.createElement('div');
                 enemyCar.setAttribute('class', 'enemy');
                 enemyCar.y = ((x+1) * 450) * -1;
                 enemyCar.style.top = enemyCar.y + "px";
-                // enemyCar.style.backgroundColor= randomColo(); telegram open karoyaha se kahe se ki hota so o kaha se hota so???score update hota na o kaha se hota 
+                // enemyCar.style.backgroundColor= randomColo();
                 enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
                 gameArea.appendChild(enemyCar);
 
